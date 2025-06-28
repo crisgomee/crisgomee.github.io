@@ -219,6 +219,7 @@ small {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
     grid-template-areas: 
+      "hd"
       "card"
       "main"
       "ft";

@@ -256,6 +256,7 @@ small {
   }
 
   #panel2 {
+    border-top: none;
     border-bottom: solid 1px #00ffe1;
   }
 

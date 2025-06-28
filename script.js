@@ -31,6 +31,28 @@ function postTweet() {
   document.getElementById('tweetImage').value = '';
 }
 
+//Extract Tweets from JSON
+fetch('tweets.json')
+  .then(res => res.json())
+  .then(data => {
+    const tweetFeed = document.getElementById('tweetFeed');
+    tweetFeed.innerHTML = ''; // Clear existing tweets
+
+    data.forEach(tweet => {
+      const tweetDiv = document.createElement('div');
+      tweetDiv.className = 'tweet';
+
+      tweetDiv.innerHTML = `
+        <small>${tweet.user}</small>
+        <p>${tweet.message}</p>
+        ${tweet.img ? `<img src="${tweet.img}" />` : ''}
+        <small>${tweet.date}</small>
+      `;
+
+      tweetFeed.appendChild(tweetDiv);
+    });
+  });
+
 //SlideShow
 let currentSlide = 0;
 

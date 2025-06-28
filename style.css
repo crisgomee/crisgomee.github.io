@@ -32,7 +32,7 @@ button {
   /* Keep this */
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
-  grid-template-rows: 65px auto 50px;
+  grid-template-rows: 50px auto 35px;
   grid-template-areas: 
     "hd hd hd hd"
     "card main side side"
@@ -49,15 +49,34 @@ button {
   flex-direction: row;
   align-items: center;
   gap:25px;
-  padding-top: 10px;
   padding-left: 10px;
   background-color: rgba(255, 50, 50, 0.50);
   color: black;
   border-bottom: solid 1px black;
 }
 
-.tab img {
-  height:100px;
+#status-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+.bar {
+  width: 3in; /* 3 inches long */
+  border-radius: 5px;
+}
+
+/* HP bar */
+.hp-bar {
+  height: 15px;
+  background-color: rgb(0, 255, 55);
+}
+
+/* EXP bar */
+.exp-bar {
+  height: 5px;
+  background-color: white;
 }
 
 .card {
@@ -226,7 +245,8 @@ small {
 
   .footer,
   .side,
-  #panel3 {
+  #panel3,
+  #status-bars {
     display: none;
   }
 

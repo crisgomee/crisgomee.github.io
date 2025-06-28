@@ -1,251 +1,53 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+function postTweet() {
+  const tweetText = document.getElementById('tweetText').value.trim();
+  const tweetImage = document.getElementById('tweetImage').files[0];
+  const tweetFeed = document.getElementById('tweetFeed');
 
-body, html {
-  height: 100%;
-  font-family: Arial, sans-serif;
-}
-
-h4, h1 {
-  color: #60ddff;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-button {
-  border: solid 1px #00ffe1;
-  border-radius: 5px;
-  background-color: #00000000;
-  height: 25px;
-  width: 50px;
-  color: whitesmoke;
-}
-
-.container {
-  /* Keep this */
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
-  grid-template-rows: 65px auto 50px;
-  grid-template-areas: 
-    "hd hd hd hd"
-    "card main side side"
-    "ft ft ft ft";
-  height: 100vh;
-  width: auto;
-  min-height: 0; /* 👈 Important to allow scrolling children */
-  background:linear-gradient(#002841, #00111c);
-}
-
-.header {
-  grid-area: hd;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap:25px;
-  padding-top: 10px;
-  padding-left: 10px;
-  background-color: rgba(255, 50, 50, 0.50);
-  color: black;
-  border-bottom: solid 1px black;
-}
-
-.tab img {
-  height:100px;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 0; /* spacing between panels */
-}
-
-.panel {
-  flex:1;
-  color: white;
-  text-align: left;
-}
-
-#panel2 {
-  padding:25px;
-  border-top: solid 1px #00ffe1;
-  border-bottom: solid 1px #00ffe1;
-}
-
-.main {
-  grid-area: main;
-  padding-top: 15px;
-  border-left: 1px solid #00ffe1;
-  overflow-y: auto;      /* 👈 Enable scrolling */
-  color: whitesmoke;
-}
-
-.side {
-  grid-area: side;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.footer {
-  grid-area: ft;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 50, 50, 0.50);
-  color: black;
-  border-top: solid 2px black;
-}
-
-/*Tweet Box*/
-.tweet-box {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border-bottom: 1px solid #00ffe1;
-  padding: 15px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  background-color: #002841;
-}
-
-/* WebKit Browsers */
-.main::-webkit-scrollbar {
-  background-color: #00ffe113;
-  width: 10px;
-}
-
-.main::-webkit-scrollbar-track {
-  border-radius: 4px;
-}
-
-.main::-webkit-scrollbar-thumb {
-  background-color: #00ffe1;
-  border-radius: 4px;
-  border: 2px solid #111;
-}
-
-.main::-webkit-scrollbar-thumb:hover {
-  background-color: #ffffff;
-}
-
-
-#tweetText {
-  width: 100%;
-  height: 80px;
-  resize: vertical;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ffffff;
-  border-radius: 8px;
-  background-color: #00ffe110;
-  color: white;
-}
-
-.tweet-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#tweetFeed .tweet {
-  background-color: #00414a94;
-  padding: 10px;
-  margin-bottom: 5px;
-}
-
-.tweet img {
-  max-width: 100%;
-  height: auto;
-  margin-top: 10px;
-  border-radius: 6px;
-}
-
-small {
-  color: grey;
-}
-
-/*SlideShow*/
-.slideshow {
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: glitch 1s infinite;
-}
-
-.slider {
-  width: 100%;
-  max-width: 600px;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.slides {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 100%;
-}
-
-.slide {
-  flex: 0 0 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: center top;
-  animation: glitch-fuzz 7.5s 2s infinite steps(1);
-  opacity: 25%;
-}
-
-
-@keyframes glitch-fuzz {
-  0%, 92%, 100% {
-    opacity: 25%;
+  if (!tweetText && !tweetImage) {
+    alert("Please enter text or upload an image.");
+    return;
   }
 
-  80%, 90%, 98% {
-    opacity: 65%;
+  const tweet = document.createElement('div');
+  tweet.className = 'tweet';
+
+  const timestamp = new Date().toLocaleString();
+  tweet.innerHTML = `<p>${tweetText}</p><small>${timestamp}</small>`;
+
+  if (tweetImage) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      tweet.appendChild(img);
+    };
+    reader.readAsDataURL(tweetImage);
   }
 
+  tweetFeed.prepend(tweet);
+
+  // Clear inputs
+  document.getElementById('tweetText').value = '';
+  document.getElementById('tweetImage').value = '';
 }
-/*Phone Screen*/
-@media screen and (max-width: 768px) {
-  .container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    grid-template-areas: 
-      "card"
-      "main"
-      "ft";
-  }
 
-  .header,
-  .side,
-  #panel2,
-  .panel:last-child {
-    display: none;
-  }
+//SlideShow
+let currentSlide = 0;
 
-  .card {
-    flex-direction: column;
-  }
+function showSlide(index) {
+  const slides = document.querySelector('.slides');
+  const total = document.querySelectorAll('.slide').length;
 
-  .panel {
-    padding: 15px;
-  }
-
-  .main {
-    padding: 15px;
-    border-left: none;
-  }
-
-  .tweet-box,
-  #tweetFeed {
-    width: 100%;
-  }
+  currentSlide = index % total;
+  slides.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
+
+// Auto-slide every 3 seconds
+setInterval(() => {
+  showSlide(currentSlide + 1);
+}, 3000);
+
+window.onload = () => {
+  showSlide(0);
+};
+

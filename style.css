@@ -73,7 +73,7 @@ button {
 }
 
 #panel2 {
-  padding:25px;
+  padding: 25px;
   border-top: solid 1px #00ffe1;
   border-bottom: solid 1px #00ffe1;
 }
@@ -226,9 +226,7 @@ small {
   }
 
   .footer,
-  .side,
-  #panel2,
-  .panel:last-child {
+  .side {
     display: none;
   }
 
@@ -237,11 +235,28 @@ small {
   }
 
   .card {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /* Hide scrollbar */
+    scrollbar-width: none;          /* Firefox */
   }
+ 
+  .phone-swipe::-webkit-scrollbar {
+    display: none;                  /* Chrome, Safari */
+  }
+  
 
   .panel {
-    padding: 15px;
+    flex: 0 0 100vw;
+    scroll-snap-align: start;
+  }
+
+  #panel2 {
+    border:none;
   }
 
   .main {

@@ -112,7 +112,6 @@ button {
   padding: 15px;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #002841;
 }
 
 /* WebKit Browsers */
@@ -226,7 +225,8 @@ small {
   }
 
   .footer,
-  .side {
+  .side,
+  #panel3 {
     display: none;
   }
 
@@ -256,7 +256,7 @@ small {
   }
 
   #panel2 {
-    border:none;
+    border-bottom: solid 1px #00ffe1;
   }
 
   .main {

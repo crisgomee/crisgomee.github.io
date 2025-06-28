@@ -224,10 +224,14 @@ small {
       "ft";
   }
 
-  .header,
+  .footer,
   .side,
   #panel2,
   .panel:last-child {
+    display: none;
+  }
+
+  .header img {
     display: none;
   }
 

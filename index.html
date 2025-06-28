@@ -3,14 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My GitHub Page</title>
+  <title>Grid Layout Page</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Welcome to My GitHub Page</h1>
-  <p>This is a simple static website hosted using GitHub Pages.</p>
-  <button onclick="showMessage()">Click Me</button>
-
+  <div class="container">
+    <header class="header">
+      <div class="tab" id="hp"><img src="image/HP1.png"></img></div>
+      <div class="tab">APPAREL</div>
+      <div class="tab">SOCIAL</div>
+    </header>
+    <aside class="card">
+      <div class="panel" id="panel1">
+        <img src="image/skullcandy.png"></img>
+      </div>
+      <div class="panel" id="panel2">
+        <h4>LBCrisGee</h4>
+        <p><br>I know how to code, so I built myself a custom pause menu — because why not turn life into a game?</p>
+        <p><br><br>Work hard, play harder — balance is the real flex.</p>
+      </div>
+      <div class="panel">
+        <img src="image/tahoe.jpg"></img>
+      </div>
+    </aside>
+    <!--Main-->
+    <main class="main">
+      <h1>&nbspLBCrisGee</h1>
+        <!--Tweet Box-->
+        <div class="tweet-box">
+          <textarea id="tweetText" placeholder="What's happening?"></textarea>
+          <div class="tweet-actions">
+            <input type="file" id="tweetImage" accept="image/*" />
+            <button onclick="postTweet()">Post</button>
+          </div>
+        </div>
+        <h2></h2>
+        <div id="tweetFeed">
+                    <div class="tweet">
+            <small>DudeWTF?1</small>
+            <p>Supreme Court sides w/Trump admin on nationwide injunctions in birthright citizenship case</p>
+            <small>6/27/2025, 12:10:00 PM</small>
+          </div>
+          <div class="tweet">
+            <small>LBCrisGee</small>
+            <p>Picked-Up @theMuska newly released classic board with red griptape! #nostalgia</p>
+              <img src="image/muska.jpg"></img>
+            <small>6/23/2025, 6:00:00 PM</small>
+          </div>
+          <div class="tweet">
+            <small>DudeWTF?!</small>
+            <p>Trump deploits bunker busters on Iran's nuclear facilities using B2 Bombers</p>
+            <small>6/22/2025, 8:20:00 PM</small>
+          </div>
+          <div class="tweet">
+            <small>TahoeWeather</small>
+            <p>Summer officially begins!</p>
+            <small>6/20/2025, 12:10:00 PM</small>
+          </div>
+        </div>
+    </main>
+    <aside class="side">
+      <section class="slideshow">
+        <div class="slider">
+          <div class="slides">
+            <img src="slideimg/RosieBoard.jpg" class="slide" />
+            <img src="slideimg/sb.jpg" class="slide" />
+            <img src="slideimg/LA.jpg" class="slide" />
+            <img src="slideimg/DY2.jpg" class="slide" />
+          </div>
+        </div>
+      </section>
+    </aside>
+    <footer class="footer">ABOUT ME</footer>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

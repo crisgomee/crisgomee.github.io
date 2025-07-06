@@ -188,6 +188,23 @@ button {
 small {
   color: grey;
 }
+/*Reply Section*/
+.reply-box {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+  margin-top: 10px;
+  margin-left: 20px;
+  padding-left: 10px;
+  border-left: 2px solid #00ffe1;
+  color: lightgray;
+}
+
+.reply-box.show {
+  max-height: 200px; /* Adjust as needed for max reply height */
+  opacity: 1;
+}
 
 /*SlideShow*/
 .slideshow {

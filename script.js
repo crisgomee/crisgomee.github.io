@@ -49,6 +49,30 @@ fetch('tweets.json')
         <small>${tweet.date}</small>
       `;
 
+      if (tweet.replies && tweet.replies.length > 0) {
+        const replyBoxes = [];
+
+        tweet.replies.forEach(reply => {
+          const replyBox = document.createElement('div');
+          replyBox.className = 'reply-box';
+          replyBox.innerHTML = `
+            <small>${reply.username}</small>
+            <p>${reply.content}</p>
+            <small>${reply.timestamp}</small>
+          `;
+          tweetDiv.appendChild(replyBox);
+          replyBoxes.push(replyBox);
+        });
+
+        // Toggle slide in/out on tweet click
+        tweetDiv.addEventListener('click', function (e) {
+          replyBoxes.forEach(box => {
+            box.classList.toggle('show');
+          });
+          e.stopPropagation();
+        });
+      }
+
       tweetFeed.appendChild(tweetDiv);
     });
   });

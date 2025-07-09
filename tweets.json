@@ -3,7 +3,14 @@
     "user": "LBCrisGee",
     "message": "Picked-Up PRod's white Nike Airmax at retail price!",
     "img": "image/PRod.jpg",
-    "date": "7/6/2025, 2:02:00 PM"
+    "date": "7/6/2025, 2:02:00 PM,
+    "replies": [
+          {
+            "username": "SneakerHead",
+            "content": "🔥🔥🔥",
+            "timestamp": "7/6/2025, 2:05:03 PM"
+          }
+        ]
     },
     {
     "user": "LBCrisGee",

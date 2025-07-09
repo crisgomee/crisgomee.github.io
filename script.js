@@ -77,6 +77,7 @@ fetch('tweets.json')
     });
   });
 
+
 //SlideShow
 let currentSlide = 0;
 
@@ -96,4 +97,3 @@ setInterval(() => {
 window.onload = () => {
   showSlide(0);
 };
-

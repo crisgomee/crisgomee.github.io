@@ -13,6 +13,16 @@ h4, h1 {
   color: #60ddff;
 }
 
+a {
+    color: rgb(0, 27, 31);
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+a:hover {
+    color: whitesmoke;
+}
+
 img {
   display: block;
   max-width: 100%;
